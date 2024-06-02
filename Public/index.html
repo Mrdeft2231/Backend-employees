@@ -15,12 +15,20 @@
       </div>
       <div class="blocking-Authirization">
         <h2>Авторизация</h2>
-        <div class="fields">
-        <label for="username"><input  type="text"></label>
-        <label for="password"><input type="password"></label>
-        <div class="authirization">
-          <button>Войти</button>
-        </div>
+        <form class="fields" action="" method="get">
+        <input 
+        type="login"
+        name="login"
+        id="login"
+        placeholder="Введите логин"
+        required>
+        <input type="password"
+         name ="password"
+         id="password"
+         placeholder="Введите пароль"
+         required>
+        <button id="submit" type="submit">Войти</button>
+        </form>
         </div>
       </div>
     </div>

@@ -18,6 +18,10 @@
   font-style: normal;
 }
 
+input:hover::placeholder {
+  color: transparent;
+}
+
 body {
   font-family: 'Oswald-regular';
 }
@@ -65,14 +69,36 @@ body {
   gap: 2vh;
 }
 
-
-
-.fields input {
-  font-size: 2vh;
-  border-radius: 60px;
-  border: none;
+#login, #password {
+  font-size: 3vh;
+  border-radius: 15px;
   width: 40vh;
   height: 5vh;
   background-color: rgb(255, 255, 255, 0);
   border: 2px solid white;
+  padding: 0px 0.5vh 0px 0.5vh;
+}
+
+#login:focus, #password:focus {
+  outline: none;
+}
+
+#login:hover, #password:hover {
+  background-color: rgb(255, 255, 255, 0.2);
+  color: #8E8E8E;
+}
+
+#submit {
+  width: 20vh;
+  height: 5vh;
+  background-color: #8E8E8E;
+  border-radius: 15px;
+  border: 2px solid white;
+  color: white;
+  font-size: 3vh;
+}
+
+#submit:hover {
+  background-color: white;
+  color: #8E8E8E;
 }
