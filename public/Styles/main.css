@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --index: calc(1vw + 1vh);
+  --size: calc(var(--index) * 4);
+}
+
 @font-face {
   font-family: 'Oswald-regular';
   src: url(../Fonts/Oswald-Regular.ttf);
@@ -104,4 +109,38 @@ body {
 #submit:hover {
   background-color: white;
   color: #8E8E8E;
+}
+
+/* dashboard страница */
+
+main {
+  max-width: 100vw;
+  height: 100vh;
+  background-color: #D8C6C6;
+  padding: 10vh 10vh 10vh 10vh;
+}
+
+.Line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #000;
+  border-radius: 2px;
+  height: 100%;
+}
+
+.Text-title {
+  text-align: center;
+  font-family: 'Oswald-Bold';
+  padding-bottom: 2vh;
+  font-size: 3vh;
+}
+
+.Staff-Editor {
+  width: 100%;
+  height: 50vh;
+  border-radius: 60px;
+  margin: 0 auto;
+  background-color: #D1BBBB;
+  box-shadow: #5e5e5e 0px 0px 10px 0px;
 }
