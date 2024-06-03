@@ -24,6 +24,7 @@ input:hover::placeholder {
 
 body {
   font-family: 'Oswald-regular';
+  overflow-x: hidden;
 }
 
 .Content {
@@ -43,6 +44,7 @@ body {
   font-size: 3vh;
 }
 
+
 .blocking-Authirization {
   display: flex;
   flex-direction: column;
@@ -59,6 +61,7 @@ body {
 .blocking-Authirization h2 {
   font-size: 'Oswald-regular';
   font-size: 3.5vh;
+  color: white;
 }
 
 .fields {
