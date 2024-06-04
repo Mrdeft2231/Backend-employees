@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админ-панель</title>
   <link rel="stylesheet" href="../Styles/main.css">
+  <Script src="../JavaScript/main.js" defer></Script>
 </head>
 <body>
 <main>
@@ -15,8 +16,25 @@
       
     </div>
   </div>
-  
 </section>
+  <div class="Staff-Editor-item-shadow">
+    <div class="Staff-Editor-item">
+      <div class="Staff-Editor-photo">
+      <img src="../svg/фото.svg" alt="" class="photo" id="ph">
+      <input type="file" name="photo" id="photo" multiple="multiple" />
+      <button class="button-photo button" onclick="document.getElementById('photo').click()">Загрузить фотографию</button>
+      </div>
+      <div class="Staff-Editor-Text">
+        <label for="name">ФИО</label>
+        <input type="text" name="name" id="name" class="input">
+        <label for="job">Должность</label>
+        <input type="text" name="job" id="job" class="input" >
+      </div>
+      <div class="button-save">
+        <button class="button" >Сохранить</button>
+      </div>
+    </div>
+    </div>
 </main>
 </body>
 </html>

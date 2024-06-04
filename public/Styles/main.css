@@ -32,6 +32,27 @@ body {
   overflow-x: hidden;
 }
 
+.button {
+  font-family: 'Oswald-regular';
+  background-color: #8E8E8E;
+  border: 2px solid white;
+  color: white;
+  border-radius: 2rem;
+}
+
+.input {
+  width: 20vw;
+  height: 5vh;
+  border-radius: 0.5rem;
+  background-color: rgb(255, 255, 255, 0.3);
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.button:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
 .Content {
   background-color: rgb(221, 226, 171);
   width: 100%;
@@ -99,10 +120,8 @@ body {
 #submit {
   width: 20vh;
   height: 5vh;
-  background-color: #8E8E8E;
   border-radius: 15px;
   border: 2px solid white;
-  color: white;
   font-size: 3vh;
 }
 
@@ -124,9 +143,9 @@ main {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  border: 1px solid #000;
+  border: 1px solid #ffffff;
   border-radius: 2px;
-  height: 100%;
+  height: 50vh;
 }
 
 .Text-title {
@@ -143,4 +162,78 @@ main {
   margin: 0 auto;
   background-color: #D1BBBB;
   box-shadow: #5e5e5e 0px 0px 10px 0px;
+}
+
+.Staff-Editor-item-shadow {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.Staff-Editor-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: calc(var(--size) * 4.35);
+  top: calc(var(--index) * 5.3);
+  width: 50vw;
+  height: 50vh;
+  border-radius: 2rem;
+  border: 2vh solid #ffffff;
+  background-color: #D8C6C6;
+  padding: 4vh 4vh 4vh 4vh;
+}
+
+.Staff-Editor-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+}
+
+.Staff-Editor-photo img {
+  width: 15vw;
+  height: 25vh;
+}
+
+#photo {
+  display: none;
+}
+
+.button-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  height: 5vh;
+}
+
+.Staff-Editor-Text {
+  width: 25vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1vh;
+  justify-content: center;
+}
+
+.Staff-Editor-Text label {
+  font-family: 'Oswald-regular';
+  color: #803838;
+  font-size: 2vh;
+}
+
+.button-save {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  width: 10vw;
+  height: 5vh;
 }
