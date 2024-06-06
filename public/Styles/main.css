@@ -235,5 +235,12 @@ main {
   justify-content: end;
   align-items: end;
   width: 10vw;
-  height: 5vh;
+  height: 42vh;
+}
+
+.button-save button {
+  width: 5vw;
+  height: 4vh;
+  font-size: 2vh;
+  
 }
