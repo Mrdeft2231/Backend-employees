@@ -6,10 +6,10 @@ const userPasswordInput = document.querySelector('#password');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  const userName = userNameInput.value;
-  const userPassword = userPasswordInput.value;
+  const username = userNameInput.value;
+  const password = userPasswordInput.value;
 
-  if (!userName || !userPassword) {
+  if (!username || !password) {
     alert('Заполните все поля');
     return;
   }
@@ -20,8 +20,8 @@ form.addEventListener('submit', (event) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userName: userName,
-      userPassword: userPassword
+      username: username,
+      password: password
     })
   })
   .then(response => {
