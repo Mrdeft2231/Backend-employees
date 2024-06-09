@@ -6,6 +6,7 @@
   <title>Админ-панель</title>
   <link rel="stylesheet" href="../Public/Styles/main.css">
   <Script src="../Public/JavaScript/main.js" defer></Script>
+  <script src="../public/JavaScript/addingEmployees.js" defer></script>
 </head>
 <body>
 <main>
@@ -19,17 +20,21 @@
     </div>
   </div>
 </section>
-
+<h2 class="Text-title" >Аккаунты</h2>
 <section>
   <div class="Staff-Editor">
     <div class="Staff-content">
     </div>
     <div class="employee-button">
-      <button class="button" id="employee-button">Добавить</button>
+      <button class="button" id="employee-button-user">Добавить</button>
     </div>
   </div>
 </section>
-  <div class="Staff-Editor-item-shadow">
+
+
+<!-- формы добавления -->
+<section>
+  <div class="Staff-Editor-item-shadow" id="Editor-employee">
     <div class="Staff-Editor-item">
       <div class="Staff-Editor-photo">
       <img src="../Public/svg/фото.svg" alt="" class="photo" id="ph">
@@ -48,6 +53,25 @@
       </div>
     </div>
     </div>
+</section>
+<section>
+  <form id="user" method="POST">
+  <div class="Staff-Editor-item-shadow" id="Editor-user">
+    <div class="Staff-Editor-item">
+      <div class="Staff-Editor-Text">
+        <label for="name">Логин</label>
+        <input type="text" name="name" id="login-name" class="input" required>
+        <label for="job">Пароль</label>
+        <input type="text" name="password" id="password-user" class="input" required>
+      </div>
+      <div class="button-Editor">
+        <button class="button" id="button-staff-exit-user">Выйти</button>
+        <button type="submit" class="button" >Сохранить</button>
+      </div>
+    </div>
+    </div>
+  </form>
+</section>
 
     <!-- темплейты форм  -->
      <template id="template">

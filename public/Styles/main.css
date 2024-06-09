@@ -36,6 +36,10 @@ body {
   overflow-x: hidden;
 }
 
+section {
+  padding-bottom: 10vh;
+}
+
 .button {
   font-family: 'Oswald-regular';
   background-color: #8E8E8E;
@@ -222,9 +226,11 @@ main {
   font-size: 2vh;
 }
 
+#Editor-employee {
+  display: none;
+}
 
 .Staff-Editor-item-shadow {
-  display: none;
   position: absolute;
   inset: 0;
   width: 100vw;
@@ -311,4 +317,8 @@ main {
   width: 8vw;
   height: 5vh;
   font-size: 2vh;
+}
+
+#Editor-user {
+  display: none;
 }
