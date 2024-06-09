@@ -4,34 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админ-панель</title>
-  <link rel="stylesheet" href="./Styles/main.css">
-  <script src="./JavaScript/auth.js" defer></script>
+  <link rel="stylesheet" href="../Public/Styles/main.css">
+  <Script src="../Public/JavaScript/main.js" defer></Script>
 </head>
 <body>
-  <section>
-      <div class="Content">
-      <div class="Title">
-        <h1>Админ-панель</h1>
+<main>
+  <h2 class="Text-title" >Сотрудники</h2>
+<section>
+  <div class="Staff-Editor">
+    <div class="Staff-content">
+    </div>
+    <div class="employee-button">
+      <button class="button" id="employee-button">Добавить</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="Staff-Editor">
+    <div class="Staff-content">
+    </div>
+    <div class="employee-button">
+      <button class="button" id="employee-button">Добавить</button>
+    </div>
+  </div>
+</section>
+  <div class="Staff-Editor-item-shadow">
+    <div class="Staff-Editor-item">
+      <div class="Staff-Editor-photo">
+      <img src="../Public/svg/фото.svg" alt="" class="photo" id="ph">
+      <input type="file" name="photo" id="photo" multiple="multiple" />
+      <button class="button-photo button" onclick="document.getElementById('photo').click()">Загрузить фотографию</button>
       </div>
-      <div class="blocking-Authirization">
-        <h2>Авторизация</h2>
-        <form class="fields" id="form-auth" action="" method="post">
-        <input 
-        type="login"
-        name="login"
-        id="login"
-        placeholder="Введите логин"
-        required>
-        <input type="password"
-         name ="password"
-         id="password"
-         placeholder="Введите пароль"
-         required>
-        <button class="button" id="submit" type="submit">Войти</button>
-        </form>
-        </div>
+      <div class="Staff-Editor-Text">
+        <label for="name">ФИО</label>
+        <input type="text" name="name" id="name" class="input">
+        <label for="job">Должность</label>
+        <input type="text" name="job" id="job" class="input" >
+      </div>
+      <div class="button-Editor">
+        <button class="button" id="button-staff-exit">Выйти</button>
+        <button class="button" >Сохранить</button>
       </div>
     </div>
-  </section>
+    </div>
+
+    <!-- темплейты форм  -->
+     <template id="template">
+      <div class="employee-content">
+        <div class="employee-photo">
+          <img src="../svg/фото.svg" alt="" class="photo">
+        </div>
+        <div class="employee-data">
+          <ul>
+            <li><b>ФИО:</b> <span>Александор Сапегин Александрович</span></li>
+            <li><b>Должность:</b> <span>Программист</span></li>
+          </ul>
+        </div>
+      </div>
+    </template>
+</main>
 </body>
 </html>
