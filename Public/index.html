@@ -23,7 +23,7 @@
 <h2 class="Text-title" >Аккаунты</h2>
 <section>
   <div class="Staff-Editor">
-    <div class="Staff-content">
+    <div class="Staff-content users">
     </div>
     <div class="employee-button">
       <button class="button" id="employee-button-user">Добавить</button>
@@ -66,7 +66,7 @@
         <input type="text" name="password" id="password-user" class="input" required>
       </div>
       <div class="button-Editor">
-        <button type="submit" class="button" >Сохранить</button>
+        <button type="submit" class="button" id="button-user" >Сохранить</button>
         <div id="loader" class="hidden">Отправляем...</div>
       </div>
     </div>
@@ -75,17 +75,19 @@
 </section>
 
     <!-- темплейты форм  -->
-     <template id="template">
+     <template id="template-employee">
       <div class="employee-content">
         <div class="employee-photo">
           <img src="../svg/фото.svg" alt="" class="photo">
         </div>
-        <div class="employee-data">
-          <ul>
-            <li><b>ФИО:</b> <span>Александор Сапегин Александрович</span></li>
-            <li><b>Должность:</b> <span>Программист</span></li>
-          </ul>
-        </div>
+      </div>
+    </template>
+    <template id="template-user">
+      <div class="employee-data">
+        <ul>
+          <li><b>ФИО:</b> <span id="d"></span></li>
+          <li><b>Должность:</b> <span id="a"></span></li>
+        </ul>
       </div>
     </template>
 </main>

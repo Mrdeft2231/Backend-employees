@@ -1,6 +1,9 @@
 const userInput = document.getElementById('login-name');
 const passwordInput = document.getElementById('password-user');
 
+const teamplate = document.getElementById('template-user')
+
+
 
 
 async function hangleFormSubmit(event) {
@@ -14,11 +17,21 @@ async function hangleFormSubmit(event) {
 
   if (status === 200) {
     onSuccess(event.target)
+    const item = teamplate.content.cloneNode(true)
+
+    item.getElementById('d').textContent = userInput.value;
+    item.getElementById('a').textContent = passwordInput.value;
+
+    document.querySelector('.users').append(item)
     clearInput();
-  } else {
+  } else if (error && error.message) {
     onError(error);
+  } else {
+    alert('Произошла ошибка но не на сервере')
   }
 }
+
+
 
 function serializeForm(formNode) {
 const data = new FormData(formNode)
