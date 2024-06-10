@@ -55,9 +55,10 @@
     </div>
 </section>
 <section>
-  <form id="user" method="POST">
   <div class="Staff-Editor-item-shadow" id="Editor-user">
     <div class="Staff-Editor-item">
+      <button class="button-exist button" id="button-staff-exit-user">Выйти</button>
+      <form id="user" method="POST">
       <div class="Staff-Editor-Text">
         <label for="name">Логин</label>
         <input type="text" name="name" id="login-name" class="input" required>
@@ -65,8 +66,8 @@
         <input type="text" name="password" id="password-user" class="input" required>
       </div>
       <div class="button-Editor">
-        <button class="button" id="button-staff-exit-user">Выйти</button>
         <button type="submit" class="button" >Сохранить</button>
+        <div id="loader" class="hidden">Отправляем...</div>
       </div>
     </div>
     </div>

@@ -240,6 +240,7 @@ main {
 
 
 .Staff-Editor-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -320,5 +321,17 @@ main {
 }
 
 #Editor-user {
+  display: none;
+}
+
+#button-staff-exit-user {
+  position: absolute;
+  left: 88%;
+  top: 5%;
+  width: 5vw;
+  height: 5vh;
+}
+
+.hidden {
   display: none;
 }
