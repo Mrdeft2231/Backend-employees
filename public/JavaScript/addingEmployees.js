@@ -40,7 +40,7 @@ return data;
 }
 
 async function sendData(data) {
-  return await fetch('/api/user/', {
+  return await fetch('/api/user', {
     method: 'POST',
     headers: { 'Content-Type': 'multipart/form-data' },
     body: data,
