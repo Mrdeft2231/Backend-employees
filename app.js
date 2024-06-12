@@ -7,14 +7,12 @@ const connectToDatabase = require("./database/connect");
 const pagesRouter = require("./routes/page.js")
 
 
-const PORT = 3003;
+const PORT = 3000;
 
 const app = express();
 connectToDatabase();
 
 app.use(
-  cookieParser(),
-  bodyParser.json(),
   pagesRouter,
   express.static(path.join(__dirname, 'public'))
 );
