@@ -1,6 +1,8 @@
+
+
 const userInput = document.getElementById('login-name');
 const passwordInput = document.getElementById('password-user');
-
+const emailUser = document.getElementById('email-user')
 const teamplate = document.getElementById('template-user')
 
 
@@ -40,9 +42,9 @@ return data;
 }
 
 async function sendData(data) {
+  console.log('Данные с формы', Array.from(data.entries()))
   return await fetch('/api/user', {
     method: 'POST',
-    headers: { 'Content-Type': 'multipart/form-data' },
     body: data,
   })
 }
@@ -72,3 +74,14 @@ function onError(error) {
 const applicationForm = document.getElementById('user');
 applicationForm.addEventListener('submit', hangleFormSubmit);
 
+async function fetchData() {
+  try {
+    const response = await fetch('/api/user')
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.error('Ошибка при получении данных:', err);
+  }
+}
+
+fetchData();

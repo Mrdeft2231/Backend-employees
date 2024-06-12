@@ -1,11 +1,9 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const apiRouter = require('./routes/apiRouter')
+
 
 const connectToDatabase = require("./database/connect");
-const pagesRouter = require("./routes/page.js")
-const apiRouter = require('./routes/apiRouter.js')
 
 const PORT = 3000;
 

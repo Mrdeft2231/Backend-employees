@@ -1,10 +1,10 @@
 const userRouter = require("express").Router();
-const multer = require('multer');
+const upload = require('../multer/multer')
 
-const find = require("../middlewares/user")
+const findAllUsers = require('../middlewares/user')
+const sendAllUsers = require('../controllers/user')
 
-const upload = multer();
-
-userRouter.post('/user', upload, find)
+userRouter.get('/user', findAllUsers, sendAllUsers)
+userRouter.post('/user', upload.any(), )
 
 module.exports = userRouter;

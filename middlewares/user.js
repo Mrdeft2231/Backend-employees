@@ -1,10 +1,10 @@
 
+const users = require('../models/user')
 
-
-const fiind = async (req, res, next) => {
-  console.log(req.body);
-  res.send('Запрос принят')
+const findAllUsers = async (req, res, next) => {
+  req.usersArray = await users.find({})
   next();
 }
 
-module.exports = fiind
+
+module.exports = findAllUsers
