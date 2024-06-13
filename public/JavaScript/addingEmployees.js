@@ -3,7 +3,7 @@
 const userInput = document.getElementById('login-name');
 const passwordInput = document.getElementById('password-user');
 const emailUser = document.getElementById('email-user')
-const teamplate = document.getElementById('template-user')
+const template = document.getElementById('template-user')
 
 
 
@@ -19,12 +19,6 @@ async function hangleFormSubmit(event) {
 
   if (status === 200) {
     onSuccess(event.target)
-    const item = teamplate.content.cloneNode(true)
-
-    item.getElementById('d').textContent = userInput.value;
-    item.getElementById('a').textContent = passwordInput.value;
-
-    document.querySelector('.users').append(item)
     clearInput();
   } else if (error && error.message) {
     onError(error);
@@ -78,10 +72,22 @@ async function fetchData() {
   try {
     const response = await fetch('/api/user')
     const data = await response.json();
-    console.log(data);
+    SortAnArrayOfUsers(data);
   } catch (err) {
     console.error('Ошибка при получении данных:', err);
   }
+}
+
+function SortAnArrayOfUsers(users) {
+  users.forEach((user) => {
+    const item = template.content.cloneNode(true);
+    console.log(user.login)
+    item.getElementById('template-login').textContent = user.login;
+    item.getElementById('template-email').textContent = user.email;
+    item.getElementById('template-password').textContent = user.password;
+
+    document.querySelector('.users').append(item);
+  });
 }
 
 fetchData();
