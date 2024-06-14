@@ -14,6 +14,7 @@ async function hangleFormSubmit(event) {
 
   toggleLoader();
   const { status, error } = await sendData(data)
+  fetchData();
   toggleLoader();
 
 
@@ -89,5 +90,3 @@ function SortAnArrayOfUsers(users) {
     document.querySelector('.users').append(item);
   });
 }
-
-fetchData();

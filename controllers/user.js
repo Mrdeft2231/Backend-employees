@@ -1,8 +1,15 @@
 
 const sendAllUsers = (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-
   res.end(JSON.stringify(req.usersArray))
 };
 
-module.exports = sendAllUsers;
+const sendUserCreated = (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(req.users))
+}
+
+module.exports = {
+  sendAllUsers,
+  sendUserCreated
+};
