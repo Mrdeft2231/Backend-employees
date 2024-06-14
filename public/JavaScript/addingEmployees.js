@@ -14,7 +14,6 @@ async function hangleFormSubmit(event) {
 
   toggleLoader();
   const { status, error } = await sendData(data)
-  fetchData();
   toggleLoader();
 
 
@@ -47,6 +46,8 @@ async function sendData(data) {
 function clearInput() {
   userInput.value = '';
   passwordInput.value = '';
+  emailUser.value = '';
+  
 }
 
 function toggleLoader() {
@@ -54,9 +55,10 @@ function toggleLoader() {
   loader.classList.toggle('hidden')
 }
 
-function onSuccess(formNode) {
+function onSuccess() {
   alert('Данные успешно отправленны')
-  formNode.classList.toggle('hidden')
+  document.getElementById('Editor-user').style.display = 'none'
+  
 }
 
 function onError(error) {
@@ -90,3 +92,6 @@ function SortAnArrayOfUsers(users) {
     document.querySelector('.users').append(item);
   });
 }
+
+
+fetchData();
