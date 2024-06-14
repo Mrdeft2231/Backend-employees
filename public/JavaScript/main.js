@@ -2,7 +2,7 @@
 let image = document.querySelector('.photo');
 let file = document.querySelector('#photo');
 
-
+// gg
 // Кнопки для добавления сотрудников
 let employeeButton = document.querySelector('#employee-button');
 let staffEmployee = document.querySelector('#Editor-employee');
