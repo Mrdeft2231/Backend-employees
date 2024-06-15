@@ -5,33 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админ-панель</title>
   <link rel="stylesheet" href="./Styles/main.css">
-  <script src="./JavaScript/auth.js" defer></script>
 </head>
 <body>
-  <section>
-      <div class="Content">
-      <div class="Title">
-        <h1>Админ-панель</h1>
+<main>
+  <h2 class="Text-title" >Сотрудники</h2>
+<section>
+  <div class="Staff-Editor">
+    <div class="Staff-content">
+    </div>
+    <div class="employee-button">
+      <button class="button" id="employee-button">Добавить</button>
+    </div>
+  </div>
+</section>
+<h2 class="Text-title" >Аккаунты</h2>
+<section>
+  <div class="Staff-Editor">
+    <div class="Staff-content users">
+    </div>
+    <div class="employee-button">
+      <button class="button" id="employee-button-user">Добавить</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- формы добавления -->
+<section>
+  <div class="Staff-Editor-item-shadow" id="Editor-employee">
+    <div class="Staff-Editor-item">
+      <div class="Staff-Editor-photo">
+      <img src="./svg/фото.svg" alt="" class="photo" id="ph">
+      <input type="file" name="photo" id="photo" multiple="multiple" />
+      <button class="button-photo button" onclick="document.getElementById('photo').click()">Загрузить фотографию</button>
       </div>
-      <div class="blocking-Authirization">
-        <h2>Авторизация</h2>
-        <form class="fields" id="form-auth" action="" method="post">
-        <input 
-        type="login"
-        name="login"
-        id="login"
-        placeholder="Введите логин"
-        required>
-        <input type="password"
-         name ="password"
-         id="password"
-         placeholder="Введите пароль"
-         required>
-        <button class="button" id="submit" type="submit">Войти</button>
-        </form>
-        </div>
+      <div class="Staff-Editor-Text">
+        <label for="name">ФИО</label>
+        <input type="text" name="name" id="name" class="input">
+        <label for="job">Должность</label>
+        <input type="text" name="job" id="job" class="input" >
+      </div>
+      <div class="button-Editor">
+        <button class="button" id="button-staff-exit">Выйти</button>
+        <button class="button" >Сохранить</button>
       </div>
     </div>
-  </section>
+    </div>
+</section>
+<section>
+  <div class="Staff-Editor-item-shadow" id="Editor-user">
+    <div class="Staff-Editor-item">
+      <button class="button-exist button" id="button-staff-exit-user">Выйти</button>
+      <form id="user" method="POST">
+      <div class="Staff-Editor-Text">
+        <label for="name">Логин</label>
+        <input type="text" name="login" id="login-name" class="input" required>
+        <label for="job">Почта</label>
+        <input type="text" name="email" id="email-user" class="input" required>
+        <label for="job">Пароль</label>
+        <input type="text" name="password" id="password-user" class="input" required>
+      </div>
+      <div class="button-Editor">
+        <button type="submit" class="button" id="button-user" >Сохранить</button>
+        <div id="loader" class="hidden">Отправляем...</div>
+      </div>
+    </div>
+    </div>
+  </form>
+</section>
+
+    <!-- темплейты форм  -->
+     <template id="template-employee">
+      <div class="employee-content">
+        <div class="employee-photo">
+          <img src="../svg/фото.svg" alt="" class="photo">
+        </div>
+      </div>
+    </template>
+    <template id="template-user">
+      <div class="employee-data">
+        <ul>
+          <li><b>Логин:</b> <span id="template-login"></span></li>
+          <li><b>Почта:</b> <span id="template-email"></span></li>
+          <li><b>Пароль:</b> <span id="template-password"></span></li>
+        </ul>
+      </div>
+    </template>
+    <Script src="./JavaScript/main.js"></Script>
+  <script src="./JavaScript/addingEmployees.js"></script>
+</main>
 </body>
 </html>
