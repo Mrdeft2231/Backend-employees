@@ -5,6 +5,7 @@ const passwordInput = document.getElementById('password-user');
 const emailUser = document.getElementById('email-user')
 const template = document.getElementById('template-user')
 
+let dataSwitch = false
 
 
 
@@ -19,6 +20,8 @@ async function hangleFormSubmit(event) {
 
   if (status === 200) {
     onSuccess(event.target)
+    dataSwitch = true
+    fetchData();
     clearInput();
   } else if (error && error.message) {
     onError(error);
@@ -82,15 +85,26 @@ async function fetchData() {
 }
 
 function SortAnArrayOfUsers(users) {
-  users.forEach((user) => {
+  if (dataSwitch) {
+    const user = users[users.length - 1]
     const item = template.content.cloneNode(true);
-    console.log(user.login)
     item.getElementById('template-login').textContent = user.login;
     item.getElementById('template-email').textContent = user.email;
     item.getElementById('template-password').textContent = user.password;
 
     document.querySelector('.users').append(item);
-  });
+    return dataSwitch = false
+  } else {
+    users.forEach((user) => {
+      const item = template.content.cloneNode(true);
+      item.getElementById('template-login').textContent = user.login;
+      item.getElementById('template-email').textContent = user.email;
+      item.getElementById('template-password').textContent = user.password;
+  
+      document.querySelector('.users').append(item);
+    });
+  }
+  console.log(users[users.length - 1])
 }
 
 
