@@ -25,10 +25,6 @@
     <section>
       <div class="container text-center Staff-Editor">
         <div class="row row-cols-2 Staff-content">
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
         </div>
         <div class="employee-button">
           <button class="button" id="employee-button">Добавить</button>
@@ -66,11 +62,7 @@
     <h2 class="Text-title">Аккаунты</h2>
     <section>
       <div class="container text-center Staff-Editor">
-        <div class="row row-cols-2 Staff-content">
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
+        <div class="row row-cols-2 Staff-content" id="user-row">
         </div>
         <div class="employee-button">
           <button class="button" id="employee-button-user">Добавить</button>
@@ -84,10 +76,11 @@
     <section>
       <div class="Staff-Editor-item-shadow" id="Editor-employee">
         <div class="Staff-Editor-item">
+          <form id="employee-form" method="POST">
           <div class="Staff-Editor-photo">
             <img src="./svg/фото.svg" alt="" class="photo" id="ph">
             <input type="file" name="photo" id="photo" multiple="multiple" />
-            <button class="button-photo button" onclick="document.getElementById('photo').click()">Загрузить
+            <button type="button" class="button-photo button" onclick="document.getElementById('photo').click()">Загрузить
               фотографию</button>
           </div>
           <div class="Staff-Editor-Text">
@@ -97,9 +90,11 @@
             <input type="text" name="job" id="job" class="input">
           </div>
           <div class="button-Editor">
-            <button class="button" id="button-staff-exit">Выйти</button>
             <button class="button">Сохранить</button>
+            <button type="button" class="button" id="button-staff-exit">Выйти</button>
+            <div id="loader" class="hidden">Отправляем...</div>
           </div>
+        </form>
         </div>
       </div>
     </section>
@@ -120,6 +115,7 @@
           <div class="button-Editor">
             <button class="button" id="button-staff-exit-stanok">Выйти</button>
             <button class="button">Сохранить</button>
+            
           </div>
         </div>
       </div>
@@ -209,22 +205,30 @@
 
     <!-- темплейты форм  -->
     <template id="template-employee">
-      <div class="employee-content">
+      <div class="col col-employee">
         <div class="employee-photo">
-          <img src="../svg/фото.svg" alt="" class="photo">
+          <img id="template-employee-photo" src="../svg/фото.svg" alt="" class="photo">
+        </div>
+        <div class="col-employee-text">
+          <b>ФИО:</b> <span id="template-employee-name"></span> <br>
+          <b>Дложность:</b> <span id="template-employee-job"></span> <br>
+          <b>Станок:</b> <span id="template-employee-machine"></span> <br>
+        <span class="badge">🖋️</span><span class="badge">❌</span></div>
         </div>
       </div>
     </template>
     <template id="template-user">
-      <div class="employee-data">
-        <ul>
-          <li><b>Логин:</b> <span id="template-login"></span></li>
-          <li><b>Почта:</b> <span id="template-email"></span></li>
-          <li><b>Пароль:</b> <span id="template-password"></span></li>
-        </ul>
-      </div>
+          <div class="col">
+            <b>Логин:</b> <span id="template-login"> </span> <br>
+            <b>Почта:</b> <span id="template-email"></span> <br>
+            <b>Пароль:</b> <span id="template-password" ></span>
+            <br>
+            <a href=""><span class="badge">🖋️</span></a>
+            <a href=""><span class="badge">❌</span></a>
+          </div>
     </template>
     <Script src="./JavaScript/main.js"></Script>
+    <script src="./JavaScript/addingUsers.js"></script>
     <script src="./JavaScript/addingEmployees.js"></script>
   </main>
 </body>

@@ -190,6 +190,13 @@ main {
 .col{
   outline: 1px solid #5e5e5e;
 }
+
+.col-employee {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
 /* Рабочая область  */
 
 .employee-content {
@@ -238,7 +245,7 @@ main {
 
 .Staff-Editor-item-shadow {
   display: none;
-  position: absolute;
+  position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -372,3 +379,4 @@ main {
 .hidden {
   display: none;
 }
+

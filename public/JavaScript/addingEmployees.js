@@ -1,12 +1,4 @@
-
-
-const userInput = document.getElementById('login-name');
-const passwordInput = document.getElementById('password-user');
-const emailUser = document.getElementById('email-user')
-const template = document.getElementById('template-user')
-
-let dataSwitch = false
-
+// let dataSwitch = false
 
 
 async function hangleFormSubmit(event) {
@@ -17,40 +9,21 @@ async function hangleFormSubmit(event) {
   const { status, error } = await sendData(data)
   toggleLoader();
 
-
   if (status === 200) {
     onSuccess(event.target)
-    dataSwitch = true
+    // dataSwitch = true
     fetchData();
-    clearInput();
-  } else if (error && error.message) {
-    onError(error);
+    
+  } else if ( error && error.message) {
+    onError(error)
   } else {
     alert('Произошла ошибка но не на сервере')
   }
 }
 
-
-
 function serializeForm(formNode) {
-const data = new FormData(formNode)
-console.log('Данные с формы', Array.from(data.entries()))
-return data;
-}
-
-async function sendData(data) {
-  console.log('Данные с формы', Array.from(data.entries()))
-  return await fetch('/api/user', {
-    method: 'POST',
-    body: data,
-  })
-}
-
-function clearInput() {
-  userInput.value = '';
-  passwordInput.value = '';
-  emailUser.value = '';
-  
+  const data = new FormData(formNode)
+  return data;
 }
 
 function toggleLoader() {
@@ -59,53 +32,27 @@ function toggleLoader() {
 }
 
 function onSuccess() {
-  alert('Данные успешно отправленны')
-  document.getElementById('Editor-user').style.display = 'none'
-  
+  alert('Данные сотрудников успешно отправленны')
+  document.getElementById('Editor-employee').style.display = 'none'
 }
 
 function onError(error) {
-
   alert(error.message);
 }
 
-
-
-const applicationForm = document.getElementById('user');
-applicationForm.addEventListener('submit', hangleFormSubmit);
-
-async function fetchData() {
-  try {
-    const response = await fetch('/api/user')
-    const data = await response.json();
-    SortAnArrayOfUsers(data);
-  } catch (err) {
-    console.error('Ошибка при получении данных:', err);
-  }
+async function sendData(data) {
+  console.log('Данные сотрудников', Array.from(data.entries()))
+  return await fetch('/api/employee', {
+    method: 'POST',
+    body: data,
+  })
 }
-
-function SortAnArrayOfUsers(users) {
-  if (dataSwitch) {
-    const user = users[users.length - 1]
-    const item = template.content.cloneNode(true);
-    item.getElementById('template-login').textContent = user.login;
-    item.getElementById('template-email').textContent = user.email;
-    item.getElementById('template-password').textContent = user.password;
-
-    document.querySelector('.users').append(item);
-    return dataSwitch = false
-  } else {
-    users.forEach((user) => {
-      const item = template.content.cloneNode(true);
-      item.getElementById('template-login').textContent = user.login;
-      item.getElementById('template-email').textContent = user.email;
-      item.getElementById('template-password').textContent = user.password;
-  
-      document.querySelector('.users').append(item);
-    });
-  }
-  console.log(users[users.length - 1])
-}
+const applicationFormEmployee = document.getElementById('employee-form')
+applicationFormEmployee.addEventListener('submit', hangleFormSubmit);
 
 
-fetchData();
+// function SortAnArrayOfEmployee(employee) {
+//   if (dataSwitch) {
+
+//   }
+// }
