@@ -236,6 +236,7 @@ main {
 }
 
 .Staff-Editor-item-shadow {
+  display: none;
   position: absolute;
   inset: 0;
   width: 100%;
