@@ -6,10 +6,10 @@ const DB_URL = "mongodb://localhost:27017/admin";
 async function connectToDatabase() {
 try {
   await mongoose.connect(DB_URL)
-  // const Attachment = createModel({
-  //   modelName: 'Attachment',
-  //   connection: connection
-  // });
+  const Attachment = createModel({
+    modelName: 'Attachment',
+    connection: connection
+  });
 
   mongoose.Attachment = Attachment;
   console.log("Успешное подключение к базе");
