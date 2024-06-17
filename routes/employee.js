@@ -1,5 +1,8 @@
 const employeeRoute = require("express").Router();
-const upload = require('../multer/multer')
+const {
+  upload,
+  uploadPhoto
+} = require('../multer/multer')
 
 const {
   findAllEmployee,
@@ -13,6 +16,6 @@ const {
 } = require('../controllers/employee')
 
 employeeRoute.get("/employee", findAllEmployee, sendAllEmployee)
-employeeRoute.post("/employee", upload.any(), findAllEmployee, createEmployee, sendEmployeeCreated) 
+employeeRoute.post("/employee", uploadPhoto.single('Photo'), findAllEmployee, createEmployee, sendEmployeeCreated) 
 
 module.exports = employeeRoute;

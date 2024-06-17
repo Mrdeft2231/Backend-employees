@@ -8,9 +8,18 @@ const findAllEmployee = async (req, res, next) => {
 
 const createEmployee = async (req, res, next) => {
   console.log("POST /employee");
+  console.log(req.file)
   try {
-    console.log(req.body);
-    req.employee = await employee.create(req.body);
+    const employeeData = {
+      name: req.body.name,
+      job: req.body.job
+    };
+
+    if (req.file) {
+      employeeData.photoPath = req.file.path;
+    }
+
+    req.employee = await employee.create(employeeData)
     next();
   } catch (error) {
     res.setHeader("Content-Type", "application/json");

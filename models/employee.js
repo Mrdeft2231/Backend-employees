@@ -9,6 +9,10 @@ const employeeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  Photo: {
+    type: String,
+    require: true
+  },
 });
 
 module.exports = mongoose.model('employees', employeeSchema);

@@ -1,5 +1,8 @@
 const userRouter = require("express").Router();
-const upload = require('../multer/multer')
+const {
+  upload,
+  uploadPhoto
+} = require('../multer/multer')
 
 const {
     findAllUsers,
