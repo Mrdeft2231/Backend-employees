@@ -4,5 +4,5 @@ const userRouter = require("../routes/user");
 const employeeRoute = require('../routes/employee')
 
 apiRuoter.use("/api", userRouter);
-apiRuoter.use("/api", employeeRoute)
+apiRuoter.use("/api", employeeRoute);
 module.exports = apiRuoter;

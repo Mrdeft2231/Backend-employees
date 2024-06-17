@@ -5,14 +5,10 @@ const employeeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  photo: {
-    type: String,
-    required: true
-  },
   job: {
     type: String,
     required: true
   },
 });
 
-module.exports = mongoose.model('employee', employeeSchema);
+module.exports = mongoose.model('employees', employeeSchema);

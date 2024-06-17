@@ -14,7 +14,7 @@ const createUser = async (req, res, next) => {
     next();
   } catch (error) {
     res.setHeader("Content-Type", "application/json");
-    res.status(400).send(JSON.stringify({ message: "Ошибка при создании игры" }));
+    res.status(400).send(JSON.stringify({ message: "Ошибка при создании Пользователя" }));
   }
 }
 

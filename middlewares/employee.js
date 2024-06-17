@@ -7,7 +7,9 @@ const findAllEmployee = async (req, res, next) => {
 }
 
 const createEmployee = async (req, res, next) => {
+  console.log("POST /employee");
   try {
+    console.log(req.body);
     req.employee = await employee.create(req.body);
     next();
   } catch (error) {
@@ -29,5 +31,5 @@ const findEmployeeById = async (req, res, next) => {
 module.exports = {
   findAllEmployee,
   createEmployee,
-  findEmployeeById
+  // findEmployeeById
 }

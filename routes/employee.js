@@ -13,6 +13,6 @@ const {
 } = require('../controllers/employee')
 
 employeeRoute.get("/employee", findAllEmployee, sendAllEmployee)
-employeeRoute.post("/employee", upload.any, findAllEmployee, createEmployee, sendEmployeeCreated) 
+employeeRoute.post("/employee", upload.any(), findAllEmployee, createEmployee, sendEmployeeCreated) 
 
 module.exports = employeeRoute;

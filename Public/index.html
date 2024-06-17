@@ -76,7 +76,7 @@
     <section>
       <div class="Staff-Editor-item-shadow" id="Editor-employee">
         <div class="Staff-Editor-item">
-          <form id="employee-form" method="POST">
+          <form id="employee-form" method="POST" data-form-type="employee">
           <div class="Staff-Editor-photo">
             <img src="./svg/фото.svg" alt="" class="photo" id="ph">
             <input type="file" name="photo" id="photo" multiple="multiple" />
@@ -185,7 +185,7 @@
       <div class="Staff-Editor-item-shadow" id="Editor-user">
         <div class="Staff-Editor-item">
           <button class="button-exist button" id="button-staff-exit-user">Выйти</button>
-          <form id="user" method="POST">
+          <form id="user" method="POST" data-form-type="user">
             <div class="Staff-Editor-Text">
               <label for="name">Логин</label>
               <input type="text" name="login" id="login-name" class="input" required>
@@ -228,8 +228,7 @@
           </div>
     </template>
     <Script src="./JavaScript/main.js"></Script>
-    <script src="./JavaScript/addingUsers.js"></script>
-    <script src="./JavaScript/addingEmployees.js"></script>
+    <script src="./JavaScript/addRequest.js"></script>
   </main>
 </body>
 
