@@ -17,6 +17,10 @@ let userExist = document.querySelector('#button-staff-exit-user');
 let stanokButton = document.querySelector(`#employee-button-stanok`);
 let stanokEdit = document.querySelector(`#Editor-employee-stanok`);
 let stanokExist = document.querySelector(`#button-staff-exit-stanok`);
+// Кнопки для добавления графика работы
+let dataButton = document.querySelector(`#employee-button-data`);
+let dataEdit = document.querySelector(`#Editor-employee-data`);
+let dataExist = document.querySelector(`#button-staff-exit-data`);
 // Функция для загрузки фото
 file.addEventListener('change', function() {
   image.src = URL.createObjectURL(file.files[0]);
@@ -41,6 +45,14 @@ stanokExist.addEventListener(`click`, function () {
   stanokEdit.style.display = `none`;
 });
 
+dataButton.addEventListener(`click`, function () {
+  dataEdit.style.display = `block`;
+});
+
+dataExist.addEventListener(`click`, function () {
+  dataEdit.style.display = `none`;
+});
+
 userButton.addEventListener('click', function() {
   userEdit.style.display = 'block';
 });
@@ -48,3 +60,13 @@ userButton.addEventListener('click', function() {
 userExist.addEventListener('click', function() {
   userEdit.style.display = 'none';
 });
+// обработка кнопки Escape
+document.addEventListener(`keydown`, function(event) {
+  if (event.key === 'Escape') {
+    staffEmployee.style.display = 'none';
+    stanokEdit.style.display = 'none';
+    dataEdit.style.display = 'none';
+    userEdit.style.display = 'none';
+  }
+});
+
