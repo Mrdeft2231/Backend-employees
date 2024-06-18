@@ -14,10 +14,10 @@ const createEmployee = async (req, res, next) => {
       name: req.body.name,
       job: req.body.job
     };
-
     if (req.file) {
       employeeData.photoPath = req.file.path;
     }
+    console.log('Путь до файла', employeeData)
 
     req.employee = await employee.create(employeeData)
     next();
