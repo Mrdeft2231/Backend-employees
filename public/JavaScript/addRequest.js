@@ -8,9 +8,12 @@ async function hangleFormSubmit(event) {
   toggleLoader();
   try {
     let response
+    let dataS
     if (formType === 'user' ) {
       response = await sendUser(data)
+      dataS = 1
     } else if (formType === 'employee') {
+      dataS = 2
       response = await sendEmployee(data);
     }
 
@@ -20,7 +23,11 @@ async function hangleFormSubmit(event) {
     if (status === 200) {
       onSuccess(event.target)
       dataSwitch = true
-      fetchData();
+      if (dataS === 1) {
+        fetchData();
+      } else {
+        fetchDataEmployee();
+      }
       clearInput();
     } else if (error && error.message) {
       onError(error);
@@ -101,13 +108,19 @@ async function fetchData() {
     
     SortAnArrayOfUsers(userData);
 
+  } catch (err) {
+    console.error('Ошибка при получении данных:', err);
+  }
+}
+
+async function fetchDataEmployee() {
+  try {
     const employeeResponse = await fetch('/api/employee')
     const employeeData = await employeeResponse.json();
     console.log('сотрудник', employeeData)
     SortAnArrayOfEmployee(employeeData)
-
   } catch (err) {
-    console.error('Ошибка при получении данных:', err);
+    console.error('Ошибка при получении данных:', err)
   }
 }
 
@@ -139,6 +152,7 @@ const templateUser = document.getElementById('template-user')
 const templateEmployee = document.getElementById('template-employee')
 
 fetchData();
+fetchDataEmployee();
 
 // Обработка данных сотрудников
 
@@ -149,17 +163,16 @@ function SortAnArrayOfEmployee(employees) {
     const item = templateEmployee.content.cloneNode(true)
     item.getElementById('template-employee-name').textContent = employee.name;
     item.getElementById('template-employee-job').textContent = employee.job;
-    item.getElementById('template-employee-photo').src = employee.photoPath;
+    item.getElementById('template-employee-photo').src = `http://localhost:3000/${employee.photoPath}`;
 
     document.getElementById('employee-row').append(item);
     return dataSwitch = false
   } else {
     employees.forEach((employee) => {
       const item = templateEmployee.content.cloneNode(true)
-
     item.getElementById('template-employee-name').textContent = employee.name;
     item.getElementById('template-employee-job').textContent = employee.job;
-    item.getElementById('template-employee-photo').src = `http://http://localhost:3000/${employee.photoPath}`;
+    item.getElementById('template-employee-photo').src = `http://localhost:3000/${employee.photoPath}`;
 
     document.getElementById('employee-row').append(item);
     })

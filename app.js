@@ -16,4 +16,6 @@ app.use(
   
 );
 
+app.use('/uploadsPhoto', express.static('uploadsPhoto'));
+
 app.listen(PORT);
