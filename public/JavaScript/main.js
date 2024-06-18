@@ -1,6 +1,9 @@
 
 let image = document.querySelector('.photo');
 let file = document.querySelector('#photo');
+let imageMachine = document.querySelector('#ph-stanok')
+let fileMachine = document.getElementById('photo-stanok')
+
 
 // gg
 // Кнопки для добавления сотрудников
@@ -22,6 +25,12 @@ file.addEventListener('change', function() {
   image.src = URL.createObjectURL(file.files[0]);
   image.computedStyleMap.display = 'block';
 });
+
+fileMachine.addEventListener('change', function() {
+  imageMachine.src = URL.createObjectURL(file.files[0]);
+  imageMachine.computedStyleMap.display = 'block';
+})
+
 
 // Кнопки включения и отключения редактора сотрудника
 

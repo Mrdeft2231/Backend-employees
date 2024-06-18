@@ -1,6 +1,5 @@
 const employeeRoute = require("express").Router();
 const {
-  upload,
   uploadPhoto
 } = require('../multer/multer')
 

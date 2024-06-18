@@ -303,6 +303,10 @@ main {
   display: none;
 }
 
+#photo-stanok {
+  display: none;
+}
+
 .button-photo {
   display: flex;
   justify-content: center;

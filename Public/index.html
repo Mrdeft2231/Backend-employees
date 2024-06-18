@@ -35,11 +35,15 @@
     <section>
       <div class="container text-center Staff-Editor">
         <div class="row row-cols-2 Staff-content">
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-        </div>
+          <div class="col col-machine">
+            <div class="machine-photo">
+              <img id="template-machine-photo" src="./svg/фото.svg" alt="" class="photo-machine">
+            </div>
+            <div class="col-machine-text">
+              <b>Номер станка:</b> <span id="template-employee-name"></span> <br>
+            <span class="badge">🖋️</span><span class="badge">❌</span></div>
+            </div>
+          </div>
         <div class="employee-button">
           <button class="button" id="employee-button-stanok">Добавить</button>
         </div>
@@ -102,8 +106,9 @@
     <section>
       <div class="Staff-Editor-item-shadow" id="Editor-employee-stanok">
         <div class="Staff-Editor-item">
+          <form id="machine-form" method="POST" data-form-type="machine">
           <div class="Staff-Editor-photo">
-            <img src="./svg/фото.svg" alt="" class="photo" id="ph-stanok">
+            <img src="./svg/фото.svg" alt="" class="photo-machine" id="ph-stanok">
             <input type="file" name="photo" id="photo-stanok" multiple="multiple" />
             <button class="button-photo button" onclick="document.getElementById('photo-stanok').click()">Загрузить
               фотографию</button>
@@ -117,6 +122,7 @@
             <button class="button">Сохранить</button>
             
           </div>
+        </form>
         </div>
       </div>
     </section>
@@ -124,12 +130,6 @@
     <section>
       <div class="Staff-Editor-item-shadow" id="Editor-employee-data">
         <div class="Staff-Editor-item-data">
-          <!-- <div class="Staff-Editor-Text">
-            <label for="name">ФИО</label>
-            <input type="text" name="name" id="name" class="input">
-            <label for="job">Должность</label>
-            <input type="text" name="job" id="job" class="input">
-          </div> -->
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelectMouth">Месяц</label>
             <select class="form-select" id="inputGroupSelectMouth">
@@ -212,6 +212,17 @@
         <div class="col-employee-text">
           <b>ФИО:</b> <span id="template-employee-name"></span> <br>
           <b>Дложность:</b> <span id="template-employee-job"></span> <br>
+        <span class="badge">🖋️</span><span class="badge">❌</span></div>
+        </div>
+      </div>
+    </template>
+    <template id="template-machine">
+      <div class="col col-machine">
+        <div class="machine-photo">
+          <img id="template-machine-photo" src="" alt="" class="photo-machine">
+        </div>
+        <div class="col-machine-text">
+          <b>Номер станка:</b> <span id="template-machine-name"></span> <br>
         <span class="badge">🖋️</span><span class="badge">❌</span></div>
         </div>
       </div>
