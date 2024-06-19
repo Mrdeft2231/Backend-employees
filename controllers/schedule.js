@@ -1,3 +1,4 @@
+// Здесь мы отправляем ответ пользователю взамен на запрос
 
 const sendAllSchedule = (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -5,7 +6,6 @@ const sendAllSchedule = (req, res) => {
 };
 
 const sendScheduleCreated = (req, res) => {
-  console.log('Отработал')
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.schedule))
 }

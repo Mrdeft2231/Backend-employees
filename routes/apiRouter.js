@@ -1,3 +1,5 @@
+// Проводник между всеми роутами
+
 const apiRuoter = require("express").Router();
 
 const userRouter = require("../routes/user");

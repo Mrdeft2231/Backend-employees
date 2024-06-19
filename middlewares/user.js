@@ -1,3 +1,4 @@
+// получая данные здесь мы редактируем их
 
 const users = require('../models/user')
 
@@ -7,9 +8,7 @@ const findAllUsers = async (req, res, next) => {
 }
 
 const createUser = async (req, res, next) => {
-  console.log("POST /user");
   try {
-    console.log(req.body);
     req.users = await users.create(req.body);
     next();
   } catch (error) {
@@ -19,7 +18,6 @@ const createUser = async (req, res, next) => {
 }
 
 const findGameById = async (req, res, next) => {
-  console.log("Проработал метод GET /api/users/:id");
   try {
     req.users = await users.findById(req.params.id);
     next();

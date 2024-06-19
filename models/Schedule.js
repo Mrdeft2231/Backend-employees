@@ -1,3 +1,5 @@
+// Модели позволяют нам создать скелет для принятия данных
+
 const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema({

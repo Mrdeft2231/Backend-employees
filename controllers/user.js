@@ -1,3 +1,4 @@
+// Здесь мы отправляем ответ пользователю взамен на запрос
 
 const sendAllUsers = (req, res) => {
   res.setHeader('Content-Type', 'application/json');

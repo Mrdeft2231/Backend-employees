@@ -1,14 +1,13 @@
+// получая данные здесь мы редактируем их
+
 const employee = require('../models/employee');
 
 const findAllEmployee = async (req, res, next) => {
-  console.log(req.body)
   req.employeeArray = await employee.find({})
   next();
 }
 
 const createEmployee = async (req, res, next) => {
-  console.log("POST /employee");
-  console.log(req.file)
   try {
     const employeeData = {
       name: req.body.name,
@@ -17,7 +16,6 @@ const createEmployee = async (req, res, next) => {
     if (req.file) {
       employeeData.photoPath = req.file.path;
     }
-    console.log('Путь до файла', employeeData)
 
     req.employee = await employee.create(employeeData)
     next();

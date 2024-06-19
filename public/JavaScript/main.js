@@ -5,7 +5,7 @@ let imageMachine = document.querySelector('#ph-stanok')
 let fileMachine = document.getElementById('photo-stanok')
 
 
-// gg
+
 // Кнопки для добавления сотрудников
 let employeeButton = document.querySelector('#employee-button');
 let staffEmployee = document.querySelector('#Editor-employee');
@@ -59,6 +59,8 @@ stanokExist.addEventListener(`click`, function () {
   stanokEdit.style.display = `none`;
 });
 
+// Кнопки включения и отключения редактора пользователей
+
 userButton.addEventListener('click', function () {
   userEdit.style.display = 'block';
 });
@@ -66,6 +68,8 @@ userButton.addEventListener('click', function () {
 userExist.addEventListener('click', function () {
   userEdit.style.display = 'none';
 });
+
+// Кнопки включения и отключения редактора графиков
 
 dataButton.addEventListener('click', function () {
   dataEdit.style.display = 'block'

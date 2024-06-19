@@ -13,7 +13,6 @@ connectToDatabase();
 app.use(
   apiRouter,
   express.static(path.join(__dirname, 'public')),
-  
 );
 
 app.use('/uploadsPhoto', express.static('uploadsPhoto'));

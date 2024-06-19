@@ -1,3 +1,5 @@
+// В роутах можно манипулировать мидделварами в любом порядке как мы хотим а так же это маршут где принимаются данные
+
 const machineRouter = require('express').Router();
 const {
   uploadPhoto

@@ -1,3 +1,5 @@
+// Так как мы используем formData мы используем хранилише для данных.
+
 const multer = require('multer');
 const path = require('path')
 

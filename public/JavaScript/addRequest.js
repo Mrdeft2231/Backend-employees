@@ -1,4 +1,4 @@
-// Создание и отправка данных в БД
+// После отправки либо получения данных обрабатываем запрос на ошибки
 
 async function hangleFormSubmit(event) {
   event.preventDefault()
@@ -25,7 +25,6 @@ async function hangleFormSubmit(event) {
 
     const {status, error} = response;
     toggleLoader();
-    console.log(dataS)
     if (status === 200) {
       onSuccess(event.target)
       dataSwitch = true
@@ -35,9 +34,9 @@ async function hangleFormSubmit(event) {
       } else if (dataS === 2) {
         fetchDataEmployee();
       } else if (dataS === 3) {
+        console.log('Отработал')
         fetchDataMachine();
       } else if (dataS === 4) {
-        console.log('Отработал')
         fetchDataSchedule();
       }
 
@@ -139,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Получение данных с БД пользователей
+
 async function fetchData() {
   try {
     const response = await fetch('/api/user')
@@ -152,31 +152,40 @@ async function fetchData() {
 }
 
 // Получение данных с БД сотрудников
+
 async function fetchDataEmployee() {
   try {
     const employeeResponse = await fetch('/api/employee')
     const employeeData = await employeeResponse.json();
-    console.log('сотрудник', employeeData)
+
     SortAnArrayOfEmployee(employeeData)
+
   } catch (err) {
     console.error('Ошибка при получении данных:', err)
   }
 }
+
+// Получение данных с БД станков
 
 async function fetchDataMachine() {
   try {
     const machineResponse = await fetch('/api/machine')
     const machineData = await machineResponse.json();
+
     SortAnArrayOfMachine(machineData);
+
   } catch (err) {
     console.error('Ошибка при получении данных:', err)
   }
 }
 
+// Получение данных с БД графика
+
 async function fetchDataSchedule() {
   try {
     const scheduleResponse = await fetch('/api/schedule')
     const scheduleData = await scheduleResponse.json();
+
     SortAnArrayOfSchedule(scheduleData)
 
   } catch (err) {
@@ -184,7 +193,8 @@ async function fetchDataSchedule() {
   }
 }
 
-// Обработка данных с аккаунтов 
+// Обработка данных с аккаунтов
+
 function SortAnArrayOfUsers(users) {
   if (dataSwitch) {
     const user = users[users.length - 1]
@@ -239,7 +249,7 @@ function SortAnArrayOfMachine(machine) {
     const machines = machine[machine.length - 1]
     const item = templateMachine.content.cloneNode(true)
     
-    item.getElementById('templaye-machine-name').textContent = machines.machine;
+    item.getElementById('template-machine-name').textContent = machines.machine;
     item.getElementById('template-machine-photo').src = `http://localhost:3000/${machines.photoPath}`;
 
     document.getElementById('machine-row').append(item)
@@ -268,6 +278,7 @@ function SortAnArrayOfSchedule(schedule) {
     item.getElementById('template-dateTime').textContent = schedules.dateTime
 
     document.getElementById('schedule-row').append(item)
+    return dataSwitch = false
   } else {
     schedule.forEach((schedules) => {
     const item = templateSchedule.content.cloneNode(true)
@@ -282,10 +293,14 @@ function SortAnArrayOfSchedule(schedule) {
   }
 }
 
+// Находим все темплейты
+
 const templateUser = document.getElementById('template-user')
 const templateEmployee = document.getElementById('template-employee')
 const templateMachine = document.getElementById('template-machine')
 const templateSchedule = document.getElementById('template-schedule')
+
+// После прогрузки всей страницы прогружаем все данные с БД
 
 fetchData();
 fetchDataEmployee();

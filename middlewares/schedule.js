@@ -1,3 +1,5 @@
+// получая данные здесь мы редактируем их
+
 const schedule = require('../models/Schedule');
 
 const findAllSchedule = async (req, res, next) => {
@@ -6,9 +8,7 @@ const findAllSchedule = async (req, res, next) => {
 }
 
 const createSchedule = async (req, res, next) => {
-  console.log("POST /schedule");
   try {
-    console.log(req.body);
     req.schedule = await schedule.create(req.body);
     next();
   } catch (error) {

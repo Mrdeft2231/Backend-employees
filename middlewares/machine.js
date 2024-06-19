@@ -1,3 +1,5 @@
+// получая данные здесь мы редактируем их
+
 const machine = require('../models/machine');
 
 const findAllMachine = async (req, res, next) => {
@@ -6,8 +8,6 @@ const findAllMachine = async (req, res, next) => {
 }
 
 const createMachine = async (req, res, next) => {
-  console.log("POST /machine");
-  console.log(req.file)
   try {
     const employeeData = {
       machine: req.body.machine
