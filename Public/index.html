@@ -34,15 +34,7 @@
     <h2 class="Text-title">Станки</h2>
     <section>
       <div class="container text-center Staff-Editor">
-        <div class="row row-cols-2 Staff-content">
-          <div class="col col-machine">
-            <div class="machine-photo">
-              <img id="template-machine-photo" src="./svg/фото.svg" alt="" class="photo-machine">
-            </div>
-            <div class="col-machine-text">
-              <b>Номер станка:</b> <span id="template-employee-name"></span> <br>
-            <span class="badge">🖋️</span><span class="badge">❌</span></div>
-            </div>
+        <div class="row row-cols-2 Staff-content" id="machine-row">
           </div>
         <div class="employee-button">
           <button class="button" id="employee-button-stanok">Добавить</button>
@@ -53,10 +45,14 @@
     <section>
       <div class="container text-center Staff-Editor">
         <div class="row row-cols-2 Staff-content">
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
-          <div class="col">Column <br><span class="badge">🖋️</span><span class="badge">❌</span></div>
+          <div class="col">
+            <b>Месяц:</b> <span>Июнь</span>
+            <b>Режим:</b> <span>Пн-Пт</span>
+            <b>График:</b> <span>5/2</span>
+            <b>Время:</b> <span>8-17</span>
+            <a href=""><span class="badge">🖋️</span></a>
+            <a href=""><span class="badge">❌</span></a>
+          </div>
         </div>
         <div class="employee-button">
           <button class="button" id="employee-button-data">Добавить</button>
@@ -110,17 +106,16 @@
           <div class="Staff-Editor-photo">
             <img src="./svg/фото.svg" alt="" class="photo-machine" id="ph-stanok">
             <input type="file" name="photo" id="photo-stanok" multiple="multiple" />
-            <button class="button-photo button" onclick="document.getElementById('photo-stanok').click()">Загрузить
+            <button type="button" class="button-photo button" onclick="document.getElementById('photo-stanok').click()">Загрузить
               фотографию</button>
           </div>
           <div class="Staff-Editor-Text">
             <label for="number-stanok">Номер станка</label>
-            <input type="text" name="number-stanok" id="number-stanok" class="input">
+            <input type="text" name="machine" id="number-stanok" class="input">
           </div>
           <div class="button-Editor">
-            <button class="button" id="button-staff-exit-stanok">Выйти</button>
+            <button type="button" class="button" id="button-staff-exit-stanok">Выйти</button>
             <button class="button">Сохранить</button>
-            
           </div>
         </form>
         </div>
@@ -130,9 +125,10 @@
     <section>
       <div class="Staff-Editor-item-shadow" id="Editor-employee-data">
         <div class="Staff-Editor-item-data">
+          <form id="data-form" method="POST" data-form-type="data">
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelectMouth">Месяц</label>
-            <select class="form-select" id="inputGroupSelectMouth">
+            <select name="dateMonth" class="form-select" id="inputGroupSelectMouth">
               <option selected>Выберите месяц</option>
               <option value="January">Январь</option>
               <option value="February">Февраль</option>
@@ -150,7 +146,7 @@
           </div>
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelectMouth">Режим</label>
-            <select class="form-select" id="inputGroupSelectMouth">
+            <select name="dateMode" class="form-select" id="inputGroupSelectMouth">
               <option selected>Выберите режим</option>
               <option value="Pn-pt">Пн-Пт</option>
               <option value="no">-</option>
@@ -158,7 +154,7 @@
           </div>
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelectMouth">График</label>
-            <select class="form-select" id="inputGroupSelectMouth">
+            <select name="dateSchedule" class="form-select" id="inputGroupSelectMouth">
               <option selected>Выберите график</option>
               <option value="five-day">5/2</option>
               <option value="two-day">2/2</option>
@@ -166,7 +162,7 @@
           </div>
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelectMouth">Время</label>
-            <select class="form-select" id="inputGroupSelectMouth">
+            <select name="dateTime" class="form-select" id="inputGroupSelectMouth">
               <option selected>Выберите время</option>
               <option value="8-17">8-17</option>
               <option value="9-18">9-18</option>
@@ -174,9 +170,10 @@
             </select>
           </div>
           <div class="button-Editor-data">
-            <button class="button" id="button-staff-exit">Выйти</button>
+            <button type="button" class="button" id="button-staff-exit-data">Выйти</button>
             <button class="button">Сохранить</button>
           </div>
+        </form>
         </div>
       </div>
     </section>
@@ -226,6 +223,16 @@
         <span class="badge">🖋️</span><span class="badge">❌</span></div>
         </div>
       </div>
+    </template>
+    <template>
+        <div class="col">
+          <b>Месяц:</b> <span id="template-dataMonth" ></span>
+          <b>Режим:</b> <span id="template-dateMode" ></span>
+          <b>График:</b> <span id="template-dateSchedule" ></span>
+          <b>Время:</b> <span id="template-dateTime" ></span>
+          <a href=""><span class="badge">🖋️</span></a>
+          <a href=""><span class="badge">❌</span></a>
+        </div>
     </template>
     <template id="template-user">
           <div class="col">

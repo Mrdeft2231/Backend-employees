@@ -1,7 +1,6 @@
 const machine = require('../models/machine');
 
 const findAllMachine = async (req, res, next) => {
-  console.log('Все станки', req.body)
   req.machineArray = await machine.find({})
   next();
 }
@@ -18,7 +17,6 @@ const createMachine = async (req, res, next) => {
     if (req.file) {
       employeeData.photoPath = req.file.path;
     }
-    console.log('Путь до файла', employeeData)
 
     req.machine = await machine.create(employeeData)
     next();

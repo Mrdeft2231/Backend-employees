@@ -15,6 +15,9 @@ async function hangleFormSubmit(event) {
     } else if (formType === 'employee') {
       dataS = 2
       response = await sendEmployee(data);
+    } else if (formType === 'machine') {
+      dataS = 3
+      response = await sendMachine(data);
     }
 
     const {status, error} = response;
@@ -25,8 +28,10 @@ async function hangleFormSubmit(event) {
       dataSwitch = true
       if (dataS === 1) {
         fetchData();
-      } else {
+      } else if (dataS === 2) {
         fetchDataEmployee();
+      } else {
+
       }
       clearInput();
     } else if (error && error.message) {
@@ -76,6 +81,7 @@ async function sendUser(data) {
   })
 }
 
+// Создание таблицы сотрудников
 async function sendEmployee(data) {
   console.log('Данные с формы сотрдуников', Array.from(data.entries()))
   return await fetch('/api/employee', {
@@ -83,6 +89,16 @@ async function sendEmployee(data) {
     body: data,
   })
 }
+
+async function sendMachine(data) {
+  console.log('Данные с формы станков', Array.from(data.entries()))
+  return await fetch('/api/machine', {
+    method: 'POST',
+    body: data
+  })
+}
+
+
 
 let dataSwitch = false
 const inputs = document.querySelectorAll('input')
@@ -100,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Получение данных с БД
+// Получение данных с БД пользователей
 async function fetchData() {
   try {
     const response = await fetch('/api/user')
@@ -113,12 +129,24 @@ async function fetchData() {
   }
 }
 
+// Получение данных с БД сотрудников
 async function fetchDataEmployee() {
   try {
     const employeeResponse = await fetch('/api/employee')
     const employeeData = await employeeResponse.json();
     console.log('сотрудник', employeeData)
     SortAnArrayOfEmployee(employeeData)
+  } catch (err) {
+    console.error('Ошибка при получении данных:', err)
+  }
+}
+
+async function fetchDataMachine() {
+  try {
+    const machineResponse = await fetch('/api/machine')
+    const employeeData = await machineResponse.json();
+    console.log('да', employeeData)
+    SortAnArrayOfMachine(employeeData);
   } catch (err) {
     console.error('Ошибка при получении данных:', err)
   }
@@ -150,20 +178,21 @@ function SortAnArrayOfUsers(users) {
 
 const templateUser = document.getElementById('template-user')
 const templateEmployee = document.getElementById('template-employee')
+const templateMachine = document.getElementById('template-machine')
 
 fetchData();
 fetchDataEmployee();
+fetchDataMachine();
 
 // Обработка данных сотрудников
 
 function SortAnArrayOfEmployee(employees) {
-  console.log('Проверка', employees)
   if (dataSwitch) {
-    const employee = employees[employees.length - 1]
+    const employees = employees[employees.length - 1]
     const item = templateEmployee.content.cloneNode(true)
-    item.getElementById('template-employee-name').textContent = employee.name;
-    item.getElementById('template-employee-job').textContent = employee.job;
-    item.getElementById('template-employee-photo').src = `http://localhost:3000/${employee.photoPath}`;
+    item.getElementById('template-employee-name').textContent = employees.name;
+    item.getElementById('template-employee-job').textContent = employees.job;
+    item.getElementById('template-employee-photo').src = `http://localhost:3000/${employees.photoPath}`;
 
     document.getElementById('employee-row').append(item);
     return dataSwitch = false
@@ -175,6 +204,30 @@ function SortAnArrayOfEmployee(employees) {
     item.getElementById('template-employee-photo').src = `http://localhost:3000/${employee.photoPath}`;
 
     document.getElementById('employee-row').append(item);
+    })
+  }
+}
+
+// Обработка данных станков
+
+function SortAnArrayOfMachine(machine) {
+  console.log('Проверка станков', machine)
+  if (dataSwitch) {
+    const machine = machine[machine.length - 1]
+    const item = templateMachine.content.cloneNode(true)
+    
+    item.getElementById('templaye-machine-name').textContent = machine.machine;
+    item.getElementById('template-machine-photo').src = `http://localhost:3000/${machine.photoPath}`;
+
+    document.getElementById('machine-ror').append(item)
+    return dataSwitch = false
+  } else {
+    machine.forEach((machinees) => {
+    const item = templateMachine.content.cloneNode(true)
+    item.getElementById('template-machine-name').textContent = machinees.machine;
+    item.getElementById('template-machine-photo').src = `http://localhost:3000/${machinees.photoPath}`;
+
+    document.getElementById('machine-row').append(item)
     })
   }
 }
