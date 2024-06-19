@@ -24,7 +24,6 @@ async function hangleFormSubmit(event) {
     }
 
     const {status, error} = response;
-    console.log('response', response)
     toggleLoader();
     console.log(dataS)
     if (status === 200) {
@@ -74,6 +73,10 @@ function toggleLoader() {
 function onSuccess() {
   alert('Данные успешно отправленны')
   document.getElementById('Editor-user').style.display = 'none'
+  document.getElementById('Editor-employee-data').style.display = 'none'
+  document.getElementById('Editor-employee-stanok').style.display = 'none'
+  document.getElementById('Editor-employee').style.display = 'none'
+
   
 }
 
@@ -267,12 +270,14 @@ function SortAnArrayOfSchedule(schedule) {
     document.getElementById('schedule-row').append(item)
   } else {
     schedule.forEach((schedules) => {
-
+    const item = templateSchedule.content.cloneNode(true)
+      
     item.getElementById('template-dataMonth').textContent = schedules.dataMonth
     item.getElementById('template-dateMode').textContent = schedules.dateMode
     item.getElementById('template-dateSchedule').textContent = schedules.dateSchedule
     item.getElementById('template-dateTime').textContent = schedules.dateTime
 
+    document.getElementById('schedule-row').append(item)
     })
   }
 }
@@ -285,3 +290,4 @@ const templateSchedule = document.getElementById('template-schedule')
 fetchData();
 fetchDataEmployee();
 fetchDataMachine();
+fetchDataSchedule()
