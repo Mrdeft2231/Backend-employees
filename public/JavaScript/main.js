@@ -28,12 +28,12 @@ let dataExist = document.querySelector('#button-staff-exit-data')
 
 
 // Функция для загрузки фото
-file.addEventListener('change', function() {
+file.addEventListener('change', function () {
   image.src = URL.createObjectURL(file.files[0]);
   image.computedStyleMap.display = 'block';
 });
 
-fileMachine.addEventListener('change', function() {
+fileMachine.addEventListener('change', function () {
   imageMachine.src = URL.createObjectURL(fileMachine.files[0]);
   imageMachine.computedStyleMap.display = 'block';
 })
@@ -41,15 +41,15 @@ fileMachine.addEventListener('change', function() {
 
 // Кнопки включения и отключения редактора сотрудника
 
-employeeButton.addEventListener('click', function() {
+employeeButton.addEventListener('click', function () {
   staffEmployee.style.display = 'block';
- });
+});
 
-buttonExist.addEventListener('click', function() {
+buttonExist.addEventListener('click', function () {
   staffEmployee.style.display = 'none';
- });
+});
 
- // Кнопки включения и отключения редактора станков
+// Кнопки включения и отключения редактора станков
 
 stanokButton.addEventListener(`click`, function () {
   stanokEdit.style.display = `block`;
@@ -59,18 +59,18 @@ stanokExist.addEventListener(`click`, function () {
   stanokEdit.style.display = `none`;
 });
 
-userButton.addEventListener('click', function() {
+userButton.addEventListener('click', function () {
   userEdit.style.display = 'block';
 });
 
-userExist.addEventListener('click', function() {
+userExist.addEventListener('click', function () {
   userEdit.style.display = 'none';
 });
 
-dataButton.addEventListener('click', function() {
+dataButton.addEventListener('click', function () {
   dataEdit.style.display = 'block'
 })
 
-dataExist.addEventListener('click', function() {
+dataExist.addEventListener('click', function () {
   dataEdit.style.display = 'none'
 })
