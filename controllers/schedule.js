@@ -5,6 +5,7 @@ const sendAllSchedule = (req, res) => {
 };
 
 const sendScheduleCreated = (req, res) => {
+  console.log('Отработал')
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.schedule))
 }

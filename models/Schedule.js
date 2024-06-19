@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema({
-  dataMonth: {
+  dateMonth: {
     type: String,
     required: true
   },

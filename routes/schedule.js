@@ -15,6 +15,6 @@ const {
 } = require('../controllers/schedule')
 
 scheduleRouter.get('/schedule', findAllSchedule, sendAllSchedule)
-scheduleRouter.post('/schedule', upload.any(), findAllSchedule, createSchedule, sendScheduleCreated )
+scheduleRouter.post('/schedule', upload.any(), findAllSchedule, createSchedule, sendScheduleCreated)
 
 module.exports = scheduleRouter;
