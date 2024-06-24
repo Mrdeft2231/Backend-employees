@@ -34,7 +34,6 @@ async function hangleFormSubmit(event) {
       } else if (dataS === 2) {
         fetchDataEmployee();
       } else if (dataS === 3) {
-        console.log('Отработал')
         fetchDataMachine();
       } else if (dataS === 4) {
         fetchDataSchedule();
@@ -228,6 +227,29 @@ function SortAnArrayOfEmployee(employees) {
     item.getElementById('template-employee-job').textContent = employee.job;
     item.getElementById('template-employee-photo').src = `http://localhost:3000/${employee.photoPath}`;
 
+    // Дополнительные формы станков и графика
+    employees.forEach((machine) => {
+      const machines = machine.machine
+      if (machines.length === 0) {
+        item.getElementById('template-block-machine').remove();
+      } else {
+        item.getElementById('template-machineEmployee-name').textContent = machines[0].machine
+      }
+    })
+
+
+    employees.forEach((schedule) => {
+      const schedules = schedule.schedule
+      if (schedules.length === 0) {
+        item.getElementById('template-block-schedule').remove();
+      } else {
+        item.getElementById('template-dataMonth-employee').textContent = schedules[0].dateMonth
+        item.getElementById('template-dateMode-employee').textContent = schedules[0].dateMode
+        item.getElementById('template-dateSchedule-employee').textContent = schedules[0].dateSchedule
+        item.getElementById('template-dateTime-employee').textContent = schedules[0].dateTime
+      }
+    })
+
     document.getElementById('employee-row').append(item);
     return dataSwitch = false
   } else {
@@ -236,6 +258,25 @@ function SortAnArrayOfEmployee(employees) {
     item.getElementById('template-employee-name').textContent = employee.name;
     item.getElementById('template-employee-job').textContent = employee.job;
     item.getElementById('template-employee-photo').src = `http://localhost:3000/${employee.photoPath}`;
+    const machines = employee.machine
+    
+    const schedules = employee.schedule
+    
+    if (schedules.length === 0) {
+      item.getElementById('template-block-schedule').remove();
+    } else {
+    item.getElementById('template-dataMonth-employee').textContent = schedules[0].dateMonth
+    item.getElementById('template-dateMode-employee').textContent = schedules[0].dateMode
+    item.getElementById('template-dateSchedule-employee').textContent = schedules[0].dateSchedule
+    item.getElementById('template-dateTime-employee').textContent = schedules[0].dateTime
+    }
+
+    if (machines.length === 0) {
+      item.getElementById('template-block-machine').remove();
+    } else {
+      item.getElementById('template-machineEmployee-name').textContent = machines[0].machine
+    }
+
 
     document.getElementById('employee-row').append(item);
     })
@@ -253,6 +294,21 @@ function SortAnArrayOfMachine(machine) {
     item.getElementById('template-machine-photo').src = `http://localhost:3000/${machines.photoPath}`;
 
     document.getElementById('machine-row').append(item)
+
+    // Создаём чекбоксы для станков
+
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox';
+    checkbox.id = 'machine'
+    checkbox.name = 'machine'
+    checkbox.value = machines._id
+
+    const label = document.createElement('label');
+    label.htmlFor = 'machine';
+    label.innerHTML = `<b>Станок:</b> <span>${machines.machine}</span> `
+
+    StaffEditorText.appendChild(checkbox);
+    StaffEditorText.appendChild(label)
     return dataSwitch = false
   } else {
     machine.forEach((machinees) => {
@@ -261,6 +317,19 @@ function SortAnArrayOfMachine(machine) {
     item.getElementById('template-machine-photo').src = `http://localhost:3000/${machinees.photoPath}`;
 
     document.getElementById('machine-row').append(item)
+
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox';
+    checkbox.id = 'machine'
+    checkbox.name = 'machine'
+    checkbox.value = machinees._id
+
+    const label = document.createElement('label');
+    label.htmlFor = 'machine';
+    label.innerHTML = `<b>Станок:</b> <span>${machinees.machine}</span> `
+
+    StaffEditorText.appendChild(checkbox);
+    StaffEditorText.appendChild(label)
     })
   }
 }
@@ -272,26 +341,71 @@ function SortAnArrayOfSchedule(schedule) {
     const schedules = schedule[schedule.length -1]
     const item = templateSchedule.content.cloneNode(true)
 
-    item.getElementById('template-dataMonth').textContent = schedules.dataMonth
+    item.getElementById('template-dataMonth').textContent = schedules.dateMonth
     item.getElementById('template-dateMode').textContent = schedules.dateMode
     item.getElementById('template-dateSchedule').textContent = schedules.dateSchedule
     item.getElementById('template-dateTime').textContent = schedules.dateTime
 
     document.getElementById('schedule-row').append(item)
+
+    // Создаём чекбоксы для графика
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'schedule';
+    checkbox.name = 'schedule';
+    checkbox.value = schedules._id;
+
+    const label = document.createElement('label');
+    label.htmlFor = 'schedule';
+    label.innerHTML = `
+    <b>Месяц:</b> <span>${schedules.dateMonth}</span><br>
+    <b>Режим:</b> <span>${schedules.dateMode}</span><br>
+    <b>График:</b> <span>${schedules.dateSchedule}</span><br>
+    <b>Время:</b> <span>${schedules.dateTime}</span><br>
+    `
+
+    StaffEditorTextSchedule.appendChild(checkbox);
+    StaffEditorTextSchedule.appendChild(label)
     return dataSwitch = false
   } else {
     schedule.forEach((schedules) => {
+
     const item = templateSchedule.content.cloneNode(true)
       
-    item.getElementById('template-dataMonth').textContent = schedules.dataMonth
+    item.getElementById('template-dataMonth').textContent = schedules.dateMonth
     item.getElementById('template-dateMode').textContent = schedules.dateMode
     item.getElementById('template-dateSchedule').textContent = schedules.dateSchedule
     item.getElementById('template-dateTime').textContent = schedules.dateTime
 
     document.getElementById('schedule-row').append(item)
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'schedule';
+    checkbox.name = 'schedule';
+    checkbox.value = schedules._id;
+
+    const label = document.createElement('label');
+    label.htmlFor = 'schedule';
+    label.innerHTML = `
+    <b>Месяц:</b> <span>${schedules.dateMonth}</span><br>
+    <b>Режим:</b> <span>${schedules.dateMode}</span><br>
+    <b>График:</b> <span>${schedules.dateSchedule}</span><br>
+    <b>Время:</b> <span>${schedules.dateTime}</span><br>
+    `
+    
+    StaffEditorTextSchedule.appendChild(checkbox);
+    StaffEditorTextSchedule.appendChild(label)
+      
     })
   }
 }
+
+
+
+const StaffEditorText = document.getElementById('Staff-Editor-chebox-machine');
+const StaffEditorTextSchedule = document.getElementById('Staff-Editor-chebox-schedule')
 
 // Находим все темплейты
 
@@ -301,6 +415,8 @@ const templateMachine = document.getElementById('template-machine')
 const templateSchedule = document.getElementById('template-schedule')
 
 // После прогрузки всей страницы прогружаем все данные с БД
+
+
 
 fetchData();
 fetchDataEmployee();

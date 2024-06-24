@@ -3,15 +3,19 @@
 const employee = require('../models/employee');
 
 const findAllEmployee = async (req, res, next) => {
-  req.employeeArray = await employee.find({})
+  req.employeeArray = await employee.find({}).populate("machine").populate("schedule");
+  console.log(req.employeeArray)
   next();
 }
 
 const createEmployee = async (req, res, next) => {
   try {
+    
     const employeeData = {
       name: req.body.name,
-      job: req.body.job
+      job: req.body.job,
+      machine: req.body.machine,
+      schedule: req.body.schedule
     };
     if (req.file) {
       employeeData.photoPath = req.file.path;

@@ -82,6 +82,9 @@
               <input type="text" name="name" id="name" class="input" required>
               <label for="job">Должность</label>
               <input type="text" name="job" id="job" class="input" required>
+              <div id="Staff-Editor-chebox-machine">
+              </div>
+              <div id="Staff-Editor-chebox-schedule"></div>
             </div>
             <div class="button-Editor">
               <button class="button">Сохранить</button>
@@ -204,6 +207,17 @@
         <div class="col-employee-text">
           <b>ФИО:</b> <span id="template-employee-name"></span> <br>
           <b>Дложность:</b> <span id="template-employee-job"></span> <br>
+          <div class="emloyee-machine" id="template-block-machine">
+          <h2>Сотрудник на станке:</h2>
+          <b>Номер станка:</b> <span id="template-machineEmployee-name"></span></b>
+          </div>
+          <div id="template-block-schedule">
+            <h2>Сотрудник с графиком:</h2>
+            <b>Месяц:</b> <span id="template-dataMonth-employee"></span>
+            <b>Режим:</b> <span id="template-dateMode-employee"></span>
+            <b>График:</b> <span id="template-dateSchedule-employee"></span>
+            <b>Время:</b> <span id="template-dateTime-employee"></span>
+          </div>
           <span class="badge">🖋️</span><span class="badge">❌</span>
         </div>
       </div>
